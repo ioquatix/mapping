@@ -49,54 +49,7 @@ Or install it yourself as:
 
 ## Usage
 
-A mapping model is required for mapping data from one format to another:
-
-``` ruby
-# Your database model:
-module Human
-	Person = Struct.new(:name, :age, :posessions)
-	Possession = Struct.new(:name, :value)
-end
-
-# Your mapping model:
-class APIv1 < Mapping::ObjectModel
-	map(Human::Person) do |object|
-		{
-			name: object.name,
-			age: object.age,
-		}
-	end
-end
-
-class APIv2 < APIv1
-	map(Human::Person) do |object|
-		super.merge(
-			posessions: self.map(object.posessions)
-		)
-	end
-	
-	map(Human::Possession) do |object|
-		{
-			name: object.name,
-			value: object.value,
-		}
-	end
-end
-```
-
-A simple use case would be something like the following:
-
-``` ruby
-model = APIv1.new
-
-person = Human::Person.new('Bob Jones', 200, [])
-person.posessions << Human::Possession.new('Vase', '$20')
-
-expect(model.map(person)).to be == {
-	name: 'Bob Jones',
-	age: 200
-}
-```
+Please see the [project documentation](https://github.com/ioquatix/mapping) for more details.
 
 ### Model vs ObjectModel
 
@@ -104,7 +57,12 @@ The base `Mapping::Model` class provides only the basic structure required to cr
 
 ## Releases
 
-There are no documented releases.
+Please see the [project releases](https://github.com/ioquatix/mappingreleases/index) for all releases.
+
+### v1.1.2
+
+  - Improve compatibility issues with Ruby 3+.
+  - Migrate test suite to sus and add continuous integration tests.
 
 ## Contributing
 
