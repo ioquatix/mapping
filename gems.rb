@@ -11,6 +11,7 @@ gemspec
 group :maintenance, optional: true do
 	gem "bake-gem"
 	gem "bake-modernize"
+	gem "bake-releases"
 	
 	gem "utopia-project"
 end
@@ -24,5 +25,3 @@ group :test do
 	gem "bake-test"
 	gem "bake-test-external"
 end
-
-gem "bake-releases", "~> 0.3.0", :group => :maintenance
