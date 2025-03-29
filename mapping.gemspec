@@ -8,7 +8,7 @@ Gem::Specification.new do |spec|
 	
 	spec.summary = "Map an input model to an output model using a mapping model."
 	spec.authors = ["Samuel Williams"]
-	spec.license = nil
+	spec.license = "MIT"
 	
 	spec.cert_chain  = ["release.cert"]
 	spec.signing_key = File.expand_path("~/.gem/release.pem")
